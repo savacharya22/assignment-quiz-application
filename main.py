@@ -171,25 +171,9 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     
 
-def main():
-    while True:
-        create_menu()
-        user_option = input("Enter your choice: 1/2/3/4/5/6:: ")
-        
-        if user_option == '5':
-            pass
-        
-        elif user_option == '6':
-            print("Exit the quiz. ")
-            break
-        else:
-            quiz_function = choose_quiz(user_option)
-            
-            if quiz_function:
-                run_quiz(quiz_function)
     
             
-def run_quiz(quiz_function):
+def run_quiz():
             
    
     qlist = list(questions.keys())
@@ -200,10 +184,10 @@ def run_quiz(quiz_function):
 
     for idx, randnum in enumerate(qlist, start = 1):
         clear_screen()
-        display_question(idx, quiz_function()[randnum])
+        display_question(idx, movie_quiz()[randnum])
         user_choice = get_user_choice()
         
-        if user_choice == quiz_function()[randnum]['correct']:
+        if user_choice == movie_quiz()[randnum]['correct']:
             print("Correct!")
             score = score + 1
         else:
@@ -215,4 +199,4 @@ def run_quiz(quiz_function):
     print("Thanks quiz is over")
    
    
-main()     
+run_quiz()
