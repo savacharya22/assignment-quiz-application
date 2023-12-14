@@ -1,57 +1,7 @@
 import random
 import os
 
-questions = {
-    1: {
-        'que': 'What is the capital of Japan?',
-        'a': 'Beijing',
-        'b': 'Seoul',
-        'c': 'Tokyo',
-        'd': 'Bangkok',
-        'correct': 'c'
-    },
-    2: {
-        'que': 'Which element has the chemical symbol "O"?',
-        'a': 'Oxygen',
-        'b': 'Gold',
-        'c': 'Silver',
-        'd': 'Carbon',
-        'correct': 'a'
-    },
-    3: {
-        'que': 'Who wrote "Romeo and Juliet"?',
-        'a': 'Charles Dickens',
-        'b': 'Jane Austen',
-        'c': 'William Shakespeare',
-        'd': 'Mark Twain',
-        'correct': 'c'
-    },
-    4: {
-        'que': 'What is the largest mammal on Earth?',
-        'a': 'Elephant',
-        'b': 'Blue Whale',
-        'c': 'Giraffe',
-        'd': 'Hippopotamus',
-        'correct': 'b'
-    },
-    5: {
-        'que': 'Which planet is known as the "Morning Star" or "Evening Star"?',
-        'a': 'Mars',
-        'b': 'Venus',
-        'c': 'Jupiter',
-        'd': 'Saturn',
-        'correct': 'b'
-    },
-    6: {
-        'que': 'In what year did the Titanic sink?',
-        'a': '1912',
-        'b': '1923',
-        'c': '1905',
-        'd': '1931',
-        'correct': 'a'
-    },
-    # Add more questions as needed
-}
+  
 
 def create_menu():
     print("1. Enter 1 to choose Movie Quiz")
