@@ -75,9 +75,14 @@ def get_user_choice():
         else:
             print("Invalid choice. Please enetr a, b, c, d")
             
+def clear_screen():
+    # clear screen based on operating system
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
+            
 def main():
             
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     qlist = list(questions.keys())
     random.shuffle(qlist)
     score = 0
@@ -85,7 +90,7 @@ def main():
 
 
     for idx, randnum in enumerate(qlist, start = 1):
-        
+        clear_screen()
         display_question(idx, questions[randnum])
         user_choice = get_user_choice()
         
