@@ -1,5 +1,6 @@
 import random
 import os
+import json
 
 
     
@@ -114,8 +115,23 @@ def science_quiz():
     return questions
 
 
+
+            
+def save_score(name, score):
+    try: 
+        with open("scores.json", 'r') as f:
+            scores = json.load(f)
+    except FileNotFoundError:
+        scores =[]
+        
+    scores.append({'name': name, 'score': score})
+    
+    with open('scores.json', 'w') as f:
+        json.dump(scores, f)
+   
+   
 def high_scores():
-    pass
+    pass           
 
 def create_menu():
     print("Welcome yo my quiz app!!!")
@@ -126,9 +142,6 @@ def create_menu():
     print("4. Enetr 4 to Exit Quiz")
   
 
-
-
-
 def choose_quiz(option):
     if option == '1':
         print("Welcome to a movie Quiz Game")
@@ -136,16 +149,11 @@ def choose_quiz(option):
     elif option == '2':
         print("Welcome to a science Quiz game!")
         return science_quiz
-    
- 
   
     else:
         print("Invalid Option. Please choose a valid Option")
         return None
     
-  
-
-
 
 def display_question(question_number, question):
     
@@ -158,8 +166,6 @@ def display_question(question_number, question):
     print("\tc.", question['c'])
     print("\td.", question['d'])
     print()
- 
-  
   
 
 def get_user_choice():
@@ -181,23 +187,21 @@ def main():
     while True:
         
         create_menu()
-        user_option = input("Enetr your option")
+        user_option = input("Enter your option")
         if user_option == "3":
-            return high_scores
+        #    high_scores()
+           input("Press Enetr to return to the main menu")
+           clear_screen()
         elif user_option == '4':
             print("Exit the game. See you again")
             break
+            
         else:
             quiz_function = choose_quiz(user_option)
             if quiz_function:
-                run_quiz(quiz_function)
-            
-        
-    
-    
-    
-
-    
+                name, score =run_quiz(quiz_function)
+                save_score(name, score)
+                
             
 def run_quiz(quiz_function):
             
@@ -207,10 +211,9 @@ def run_quiz(quiz_function):
     score = 0
     name = input("Enter your name : ")
    
-
-
+    
     for idx, randnum in enumerate(qlist, start = 1):
-        clear_screen()
+      
         display_question(idx, quiz_function()[randnum])
         user_choice = get_user_choice()
         
@@ -219,13 +222,16 @@ def run_quiz(quiz_function):
             score = score + 1
         else:
             print("Wrong answer! ")
-
+            print(f"Correct answer is {quiz_function()[randnum]['correct']}")
+      
+    clear_screen()
     print("-"*30)
             
     print(name, "Your score is  ", score)
     print("Thanks quiz is over")
     input("Press Enetr to return to the main menu")
+    clear_screen()
     
-   
+    return name, score
    
 main()
