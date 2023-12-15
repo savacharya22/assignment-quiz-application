@@ -1,16 +1,7 @@
 import random
 import os
 
-  
 
-def create_menu():
-    print("1. Enter 1 to choose Movie Quiz")
-    print("2. Enter 2 to choose Science Quiz")
-    print("3. Enter 3 to choose Music  Quiz")
-    print("4. Enter 4 to choose Sports Quiz")
-    print("5. Enter 5 to view High Scores")
-    print("6. Enetr 6 to Exit Quiz")
-    
     
 def movie_quiz():
     questions = {
@@ -70,26 +61,88 @@ def movie_quiz():
 
 
 def science_quiz():
+    questions = {
+    1: {
+        "que": "What is the smallest planet in our solar system?",
+        "a": "Mercury",
+        "b": "Venus",
+        "c": "Earth",
+        "d": "Mars",
+        "correct": "a"
+    },
+    2: {
+        "que": "What is the process by which plants make their own food?",
+        "a": "Photosynthesis",
+        "b": "Respiration",
+        "c": "Transpiration",
+        "d": "Germination",
+        "correct": "a"
+    },
+    3: {
+        "que": "What is the main component of air?",
+        "a": "Nitrogen",
+        "b": "Oxygen",
+        "c": "Carbon dioxide",
+        "d": "Water vapor",
+        "correct": "b"
+    },
+    4: {
+        "que": "What is the largest bone in the human body?",
+        "a": "Femur",
+        "b": "Tibia",
+        "c": "Humerus",
+        "d": "Skull",
+        "correct": "a"
+    },
+    5: {
+        "que": "What is the study of rocks and minerals called?",
+        "a": "Paleontology",
+        "b": "Geology",
+        "c": "Meteorology",
+        "d": "Oceanography",
+        "correct": "b"
+    },
+    6: {
+        "que": "What is the process by which water changes from a liquid to a gas?",
+        "a": "Condensation",
+        "b": "Evaporation",
+        "c": "Precipitation",
+        "d": "Sublimation",
+        "correct": "b"
+    }
+}
+    return questions
+
+
+def high_scores():
     pass
 
-def sports_quiz():
-    pass
+def create_menu():
+    print("1. Enter 1 to choose Movie Quiz")
+    print("2. Enter 2 to choose Science Quiz")
+    print("5. Enter 5 to view High Scores")
+    print("6. Enetr 6 to Exit Quiz")
+    
 
-def music_quiz():
-    pass
+
+
 
 def choose_quiz(option):
     if option == '1':
         return movie_quiz
     elif option == '2':
         return science_quiz
-    elif option == '3':
-        return sports_quiz
-    elif option == '4':
-        return music_quiz
+    
+    # elif option == '3':
+    #     return high_scores
+  
     else:
-        print("Invalid Option. Please choose a valid Quiz")
+        print("Invalid Option. Please choose a valid Option")
         return None
+    
+  
+
+
 
 def display_question(question_number, question):
     
@@ -120,13 +173,33 @@ def clear_screen():
     
     os.system('cls' if os.name == 'nt' else 'clear')
     
+    
+def main():
+    while True:
+        
+        create_menu()
+        user_option = input("Enetr your option")
+        if user_option == "3":
+            return high_scores
+        elif user_option == '4':
+            print("Exit the game. See you again")
+            break
+        else:
+            quiz_function = choose_quiz(user_option)
+            if quiz_function:
+                run_quiz(quiz_function)
+            
+        
+    
+    
+    
 
     
             
-def run_quiz():
+def run_quiz(quiz_function):
             
    
-    qlist = list(questions.keys())
+    qlist = list(quiz_function().keys())
     random.shuffle(qlist)
     score = 0
     name = input("Enter your name :  ")
@@ -134,7 +207,7 @@ def run_quiz():
 
     for idx, randnum in enumerate(qlist, start = 1):
         clear_screen()
-        display_question(idx, movie_quiz()[randnum])
+        display_question(idx, quiz_function()[randnum])
         user_choice = get_user_choice()
         
         if user_choice == movie_quiz()[randnum]['correct']:
@@ -149,4 +222,4 @@ def run_quiz():
     print("Thanks quiz is over")
    
    
-run_quiz()
+main()
