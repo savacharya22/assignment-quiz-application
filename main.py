@@ -118,23 +118,26 @@ def high_scores():
     pass
 
 def create_menu():
+    print("Welcome yo my quiz app!!!")
+   
     print("1. Enter 1 to choose Movie Quiz")
     print("2. Enter 2 to choose Science Quiz")
-    print("5. Enter 5 to view High Scores")
-    print("6. Enetr 6 to Exit Quiz")
-    
+    print("3. Enter 3 to view High Scores")
+    print("4. Enetr 4 to Exit Quiz")
+  
 
 
 
 
 def choose_quiz(option):
     if option == '1':
+        print("Welcome to a movie Quiz Game")
         return movie_quiz
     elif option == '2':
+        print("Welcome to a science Quiz game!")
         return science_quiz
     
-    # elif option == '3':
-    #     return high_scores
+ 
   
     else:
         print("Invalid Option. Please choose a valid Option")
@@ -202,7 +205,8 @@ def run_quiz(quiz_function):
     qlist = list(quiz_function().keys())
     random.shuffle(qlist)
     score = 0
-    name = input("Enter your name :  ")
+    name = input("Enter your name : ")
+   
 
 
     for idx, randnum in enumerate(qlist, start = 1):
@@ -210,7 +214,7 @@ def run_quiz(quiz_function):
         display_question(idx, quiz_function()[randnum])
         user_choice = get_user_choice()
         
-        if user_choice == movie_quiz()[randnum]['correct']:
+        if user_choice == quiz_function()[randnum]['correct']:
             print("Correct!")
             score = score + 1
         else:
@@ -220,6 +224,8 @@ def run_quiz(quiz_function):
             
     print(name, "Your score is  ", score)
     print("Thanks quiz is over")
+    input("Press Enetr to return to the main menu")
+    
    
    
 main()
