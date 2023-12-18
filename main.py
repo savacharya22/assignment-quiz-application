@@ -114,7 +114,29 @@ def science_quiz():
 }
     return questions
 
-
+def high_scores():
+    try: 
+        with open("scores.json", "r") as f:
+            scores = json.load(f)
+            
+        if not scores:
+            print("No scores yet")
+        else:
+            print("Leaderboard: ")
+            for i, score in enumerate(sorted(scores, key = lambda x: x['score'], reverse = True), start = 1):
+                print(f"{i}. {score['name']} - {score['score']} points")
+            
+    except FileNotFoundError:
+        scores = []
+        with open("scores.json", "w") as f:
+            json.dump(scores, f)
+            
+        if not scores:
+            print("No scores yet")
+        else:
+            print("Leaderboard: ")
+            for i, score in enumerate(sorted(scores, key = lambda x: x['score'], reverse = True), start = 1):
+                print(f"{i}. {score['name']} - {score['score']} points")
 
             
 def save_score(name, score):
@@ -130,8 +152,7 @@ def save_score(name, score):
         json.dump(scores, f)
    
    
-def high_scores():
-    pass           
+      
 
 def create_menu():
     print("Welcome yo my quiz app!!!")
@@ -189,7 +210,7 @@ def main():
         create_menu()
         user_option = input("Enter your option")
         if user_option == "3":
-        #    high_scores()
+           high_scores()
            input("Press Enetr to return to the main menu")
            clear_screen()
         elif user_option == '4':
@@ -201,6 +222,7 @@ def main():
             if quiz_function:
                 name, score =run_quiz(quiz_function)
                 save_score(name, score)
+               
                 
             
 def run_quiz(quiz_function):
