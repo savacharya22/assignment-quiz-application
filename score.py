@@ -6,9 +6,7 @@ def high_scores():
     try: 
         with open("scores.json", "r") as f:
             scores = json.load(f)
-            if not scores:
-                print("No scores yet")
-            else:
+            if scores:
                 
                 df = pd.DataFrame(scores)
                 df = df.sort_values(by='score', ascending=False)
@@ -18,6 +16,8 @@ def high_scores():
             
     except FileNotFoundError:
         scores = []
+        if not scores:
+            print("No scores yet")
         with open("scores.json", "w") as f:
             json.dump(scores, f)
   
