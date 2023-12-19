@@ -9,7 +9,7 @@ if ! command -v python3 &> /dev/null; then
 fi
 
 python3 -m venv .venv
-. .venv/bin/activate
+source .venv/bin/activate
 pip install pandas
 pip install rich
 pip install pytest
