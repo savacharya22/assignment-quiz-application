@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 
+
 def high_scores():
     
     try: 

@@ -25,16 +25,22 @@ def create_menu():
     
 
 def display_question(question_number, question):
-    
-    print("-"*30)
-    print()
-    print(f"Question {question_number} ): {question['que']}")
-    print()
-    print("\ta.", question['a'])
-    print("\tb.", question['b'])
-    print("\tc.", question['c'])
-    print("\td.", question['d'])
-    print()
+    formatted_question = f"""
+{'-'*30}
+
+Question {question_number} ): {question['que']}
+
+\ta. {question['a']}
+\tb. {question['b']}
+\tc. {question['c']}
+\td. {question['d']}
+
+"""
+    print(formatted_question)
+    return formatted_question
+
+
+ 
   
 
 def get_user_choice():
