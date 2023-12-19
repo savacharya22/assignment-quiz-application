@@ -1,6 +1,6 @@
 from data import movie_quiz, science_quiz
 from score import high_scores, save_score
-
+import os
 import random
 
 from rich.console import Console
@@ -9,7 +9,8 @@ console = Console()
 
 
 
-
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
@@ -90,7 +91,7 @@ def main():
         print()
         if user_option == "3":
            high_scores()
-           Prompt.ask("[bold red on white]Press Enter to return to the main menu")
+           input("Press Enter to return to the main menu")
           
         elif user_option == '4':
             console.print("Exit the game. See you again", style = "bold red")
@@ -132,7 +133,7 @@ def run_quiz(quiz_function):
     console.print("Thanks quiz is over", style = "yellow on green")
     print()
     input("Press Enter to return to the main menu  ")
-   
+    clear_screen()
     
     return name, score
    

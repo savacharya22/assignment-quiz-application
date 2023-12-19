@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 def high_scores():
-    print("Inside high_scores function")
+    
     try: 
         with open("scores.json", "r") as f:
             scores = json.load(f)
