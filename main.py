@@ -1,7 +1,7 @@
 import random
 import os
 import json
-from colorful import fg, attr
+
     
 def movie_quiz():
     questions = {
