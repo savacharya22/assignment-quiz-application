@@ -37,32 +37,5 @@ def save_score(name, score):
    
 
 
-    print("Inside high_scores function")
-    try: 
-        with open("scores.json", "r") as f:
-            scores = json.load(f)
-            if not scores:
-                print("No scores yet")
-            else:
-                
-                df = pd.DataFrame(scores)
-                df = df.sort_values(by='score', ascending=False)
-                print("Leaderboard:")
-                print(df.to_string(index=False))
 
-            
-            
-    except FileNotFoundError:
-        scores = []
-        with open("scores.json", "w") as f:
-            json.dump(scores, f)
-            
-        if not scores:
-            print("No scores yet")
-        else:
-            df = pd.DataFrame(scores)
-            df = df.sort_values(by='score', ascending=False)
-            print("Leaderboard:")
-            print(df.to_string(index=False))
 
-            
