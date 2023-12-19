@@ -1,8 +1,7 @@
 import random
 import os
 import json
-
-
+from colorful import fg, attr
     
 def movie_quiz():
     questions = {
@@ -190,8 +189,9 @@ def display_question(question_number, question):
   
 
 def get_user_choice():
+    
     while True:
-        
+      
         choice = input("Enetr your choice (a/b/c/d): ").lower()
         if choice in ['a', 'b', 'c', 'd']:
             return choice
