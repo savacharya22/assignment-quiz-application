@@ -1,8 +1,13 @@
+
 import random
-import os
+
 import json
+import pandas as pd
+
+
 
     
+
 def movie_quiz():
     questions = {
     1: {
@@ -113,45 +118,7 @@ def science_quiz():
 }
     return questions
 
-def high_scores():
-    try: 
-        with open("scores.json", "r") as f:
-            scores = json.load(f)
-            
-        if not scores:
-            print("No scores yet")
-        else:
-            print("Leaderboard: ")
-            for i, score in enumerate(sorted(scores, key = lambda x: x['score'], reverse = True), start = 1):
-                print(f"{i}. {score['name']} - {score['score']} points")
-            
-    except FileNotFoundError:
-        scores = []
-        with open("scores.json", "w") as f:
-            json.dump(scores, f)
-            
-        if not scores:
-            print("No scores yet")
-        else:
-            print("Leaderboard: ")
-            for i, score in enumerate(sorted(scores, key = lambda x: x['score'], reverse = True), start = 1):
-                print(f"{i}. {score['name']} - {score['score']} points")
 
-            
-def save_score(name, score):
-    try: 
-        with open("scores.json", 'r') as f:
-            scores = json.load(f)
-    except FileNotFoundError:
-        scores =[]
-        
-    scores.append({'name': name, 'score': score})
-    
-    with open('scores.json', 'w') as f:
-        json.dump(scores, f)
-   
-   
-      
 
 def create_menu():
     print("Welcome yo my quiz app!!!")
@@ -159,7 +126,7 @@ def create_menu():
     print("1. Enter 1 to choose Movie Quiz")
     print("2. Enter 2 to choose Science Quiz")
     print("3. Enter 3 to view High Scores")
-    print("4. Enetr 4 to Exit Quiz")
+    print("4. Enterr 4 to Exit Quiz")
   
 
 def choose_quiz(option):
@@ -198,10 +165,141 @@ def get_user_choice():
         else:
             print("Invalid choice. Please enetr a, b, c, d")
             
-def clear_screen():
-    # clear screen based on operating system
+
+def high_scores():
+    print("Inside high_scores function")
+    try: 
+        with open("scores.json", "r") as f:
+            scores = json.load(f)
+            if not scores:
+                print("No scores yet")
+            else:
+                
+                df = pd.DataFrame(scores)
+                df = df.sort_values(by='score', ascending=False)
+                print("Leaderboard:")
+                print(df.to_string(index=False))
+
+            
+       
+           
+            
+    except FileNotFoundError:
+        scores = []
+        with open("scores.json", "w") as f:
+            json.dump(scores, f)
+  
+  
+            
+     
+
+            
+def save_score(name, score):
+    try: 
+        with open("scores.json", 'r') as f:
+            scores = json.load(f)
+    except FileNotFoundError:
+        scores =[]
+        
+    scores.append({'name': name, 'score': score})
     
-    os.system('cls' if os.name == 'nt' else 'clear')
+    with open('scores.json', 'w') as f:
+        json.dump(scores, f)
+   
+
+def high_scores():
+    print("Inside high_scores function")
+    try: 
+        with open("scores.json", "r") as f:
+            scores = json.load(f)
+            if not scores:
+                print("No scores yet")
+            else:
+                
+                df = pd.DataFrame(scores)
+                df = df.sort_values(by='score', ascending=False)
+                print("Leaderboard:")
+                print(df.to_string(index=False))
+
+            
+       
+           
+            
+    except FileNotFoundError:
+        scores = []
+        with open("scores.json", "w") as f:
+            json.dump(scores, f)
+            
+        if not scores:
+            print("No scores yet")
+        else:
+            df = pd.DataFrame(scores)
+            df = df.sort_values(by='score', ascending=False)
+            print("Leaderboard:")
+            print(df.to_string(index=False))
+
+            
+def save_score(name, score):
+    try: 
+        with open("scores.json", 'r') as f:
+            scores = json.load(f)
+    except FileNotFoundError:
+        scores =[]
+        
+    scores.append({'name': name, 'score': score})
+    
+    with open('scores.json', 'w') as f:
+        json.dump(scores, f)
+   
+   
+      
+
+def create_menu():
+    print("Welcome yo my quiz app!!!")
+   
+    print("1. Enter 1 to choose Movie Quiz")
+    print("2. Enter 2 to choose Science Quiz")
+    print("3. Enter 3 to view High Scores")
+    print("4. Enterr 4 to Exit Quiz")
+  
+
+def choose_quiz(option):
+    if option == '1':
+        print("Welcome to a movie Quiz Game")
+        return movie_quiz
+    elif option == '2':
+        print("Welcome to a science Quiz game!")
+        return science_quiz
+  
+    else:
+        print("Invalid Option. Please choose a valid Option")
+        return None
+    
+
+def display_question(question_number, question):
+    
+    print("-"*30)
+    print()
+    print(f"Question {question_number} ): {question['que']}")
+    print()
+    print("\ta.", question['a'])
+    print("\tb.", question['b'])
+    print("\tc.", question['c'])
+    print("\td.", question['d'])
+    print()
+  
+
+def get_user_choice():
+    
+    while True:
+      
+        choice = input("Enetr your choice (a/b/c/d): ").lower()
+        if choice in ['a', 'b', 'c', 'd']:
+            return choice
+        else:
+            print("Invalid choice. Please enetr a, b, c, d")
+            
+
     
     
 def main():
@@ -212,7 +310,7 @@ def main():
         if user_option == "3":
            high_scores()
            input("Press Enetr to return to the main menu")
-           clear_screen()
+          
         elif user_option == '4':
             print("Exit the game. See you again")
             break
@@ -246,13 +344,11 @@ def run_quiz(quiz_function):
             print("Wrong answer! ")
             print(f"Correct answer is {quiz_function()[randnum]['correct']}")
       
-    clear_screen()
     print("-"*30)
             
     print(name, "Your score is  ", score)
     print("Thanks quiz is over")
     input("Press Enetr to return to the main menu")
-    clear_screen()
     
     return name, score
    
