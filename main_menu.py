@@ -12,7 +12,7 @@ def clear_screen():
 def create_menu():
     print()
     print()
-    console.print("Welcome yo my quiz app!!!",
+    console.print("Welcome to my quiz app!!!",
                   style="bold underline green on white")
     print()
     console.print("1. Enter 1 to choose Movie Quiz", style="yellow")
