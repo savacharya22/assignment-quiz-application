@@ -12,13 +12,9 @@ def high_scores():
                 df = df.sort_values(by='score', ascending=False)
                 print("Leaderboard:")
                 print(df.to_string(index=False))
-            else:
-                print("No scores yet")
 
     except FileNotFoundError:
-        scores = []
         print("No scores yet")
-
 
 
 def save_score(name, score):
@@ -31,8 +27,11 @@ def save_score(name, score):
                 scores = []
     except FileNotFoundError:
         scores = []
-
+        
     scores.append({'name': name, 'score': score})
-
+        
     with open('scores.json', 'w') as f:
-        json.dump(scores, f)
+            json.dump(scores, f)
+            
+
+    
