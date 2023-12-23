@@ -6,6 +6,7 @@ import random
 def run_quiz(quiz_function):
 
     qlist = list(quiz_function().keys())
+    print(qlist)
     random.shuffle(qlist)
     score = 0
     while True:
@@ -30,6 +31,7 @@ def run_quiz(quiz_function):
                 f"Correct answer is {quiz_function()[randnum]['correct']}", style="green")
 
     print("-"*30)
+    print(quiz_function)
 
     console.print(name, "Your score is  ", score, style="bold yellow")
     print()

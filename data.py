@@ -1,56 +1,53 @@
 def movie_quiz():
     questions = {
     1: {
-        'que': 'What is the capital of Japan?',
-        'a': 'Beijing',
-        'b': 'Seoul',
-        'c': 'Tokyo',
-        'd': 'Bangkok',
-        'correct': 'c'
+        'que': 'Who directed the movie "The Dark Knight"?',
+        'a': 'Steven Spielberg',
+        'b': 'Christopher Nolan',
+        'c': 'Quentin Tarantino',
+        'd': 'Martin Scorsese',
+        'correct': 'b'
     },
     2: {
-        'que': 'Which element has the chemical symbol "O"?',
-        'a': 'Oxygen',
-        'b': 'Gold',
-        'c': 'Silver',
-        'd': 'Carbon',
+        'que': 'Which actor played the character Tony Stark/Iron Man in the Marvel Cinematic Universe?',
+        'a': 'Robert Downey Jr.',
+        'b': 'Chris Hemsworth',
+        'c': 'Chris Evans',
+        'd': 'Mark Ruffalo',
         'correct': 'a'
     },
     3: {
-        'que': 'Who wrote "Romeo and Juliet"?',
-        'a': 'Charles Dickens',
-        'b': 'Jane Austen',
-        'c': 'William Shakespeare',
-        'd': 'Mark Twain',
-        'correct': 'c'
-    },
-    4: {
-        'que': 'What is the largest mammal on Earth?',
-        'a': 'Elephant',
-        'b': 'Blue Whale',
-        'c': 'Giraffe',
-        'd': 'Hippopotamus',
-        'correct': 'b'
-    },
-    5: {
-        'que': 'Which planet is known as the "Morning Star" or "Evening Star"?',
-        'a': 'Mars',
-        'b': 'Venus',
-        'c': 'Jupiter',
-        'd': 'Saturn',
-        'correct': 'b'
-    },
-    6: {
-        'que': 'In what year did the Titanic sink?',
-        'a': '1912',
-        'b': '1923',
-        'c': '1905',
-        'd': '1931',
+        'que': 'In the movie "Forrest Gump," what does Forrest say life is like?',
+        'a': 'A box of chocolates',
+        'b': 'A puzzle',
+        'c': 'A rollercoaster',
+        'd': 'A journey',
         'correct': 'a'
     },
-    # Add more questions as needed
-    
-    
+    4: {
+        'que': 'Who played the character Jack Dawson in the movie "Titanic"?',
+        'a': 'Leonardo DiCaprio',
+        'b': 'Brad Pitt',
+        'c': 'Tom Hanks',
+        'd': 'Johnny Depp',
+        'correct': 'a'
+    },
+    5: {
+        'que': 'Which movie features a character named Harry Potter?',
+        'a': 'The Lord of the Rings',
+        'b': 'Star Wars',
+        'c': 'Harry Potter and the Sorcerer\'s Stone',
+        'd': 'The Matrix',
+        'correct': 'c'
+    },
+    6: {
+        'que': 'Who directed the movie "Inception"?',
+        'a': 'Christopher Nolan',
+        'b': 'Steven Spielberg',
+        'c': 'Quentin Tarantino',
+        'd': 'Martin Scorsese',
+        'correct': 'a'
+    },
 }
     return questions
 

@@ -3,21 +3,22 @@ import pandas as pd
 
 
 def high_scores():
-
     try:
         with open("scores.json", "r") as f:
-            scores = json.load(f)
-            if scores:
-
+            content = f.read()
+            if content:
+                scores = json.loads(content)
                 df = pd.DataFrame(scores)
                 df = df.sort_values(by='score', ascending=False)
                 print("Leaderboard:")
                 print(df.to_string(index=False))
+            else:
+                print("No scores yet")
 
     except FileNotFoundError:
         scores = []
-        if not scores:
-            print("No scores yet")
+        print("No scores yet")
+
         with open("scores.json", "w") as f:
             json.dump(scores, f)
 
@@ -25,7 +26,11 @@ def high_scores():
 def save_score(name, score):
     try:
         with open("scores.json", 'r') as f:
-            scores = json.load(f)
+            content = f.read()
+            if content:
+                scores = json.loads(content)
+            else:
+                scores = []
     except FileNotFoundError:
         scores = []
 
