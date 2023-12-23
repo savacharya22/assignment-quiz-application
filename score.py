@@ -19,8 +19,6 @@ def high_scores():
         scores = []
         print("No scores yet")
 
-        with open("scores.json", "w") as f:
-            json.dump(scores, f)
 
 
 def save_score(name, score):
